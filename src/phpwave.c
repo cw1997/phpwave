@@ -28,7 +28,7 @@
 #include "php_phpwave.h"
 
 #include <stdio.h>
-#include "./wave/wave.h"
+#include "/root/桌面/php-5.6.30/ext/phpwave/wave/wave.h"
 
 /* If you declare any globals in php_phpwave.h uncomment this:
 ZEND_DECLARE_MODULE_GLOBALS(phpwave)
@@ -68,9 +68,9 @@ PHP_FUNCTION(confirm_phpwave_compiled)
 	RETURN_STRINGL(strg, len, 0);
 }
 /* }}} */
-/* The previous line is meant for vim and emacs, so it can correctly fold and
-   unfold functions in source code. See the corresponding marks just before
-   function definition, where the functions purpose is also documented. Please
+/* The previous line is meant for vim and emacs, so it can correctly fold and 
+   unfold functions in source code. See the corresponding marks just before 
+   function definition, where the functions purpose is also documented. Please 
    follow this convention for the convenience of others editing your code.
 */
 
@@ -82,14 +82,14 @@ PHP_FUNCTION(phpwave)
 	int argc = ZEND_NUM_ARGS();
 	int file_path_len;
 
-	if (zend_parse_parameters(argc TSRMLS_CC, "s", &file_path, &file_path_len) == FAILURE)
+	if (zend_parse_parameters(argc TSRMLS_CC, "s", &file_path, &file_path_len) == FAILURE) 
 		return;
 
 	if (file_path_len == 0)
 	{
 		php_printf("%s", "Thank you for using phpwave. code by changwei, at 2017-06-11 18:24:14.");
 	}
-
+	
 	// start
 	FILE *fp = NULL;
 
@@ -97,7 +97,7 @@ PHP_FUNCTION(phpwave)
     if (!fp) {
         php_error(E_WARNING, ": can't open audio file");
     }
-
+	
     Wav wav;
     int read_result = fread(&wav, 1, sizeof(wav), fp);
     fclose(fp);
@@ -141,8 +141,8 @@ PHP_FUNCTION(phpwave)
 	zval *data_array;
 	ALLOC_INIT_ZVAL(data_array);
 	array_init(data_array);
-	add_assoc_stringl(fmt_array, "Subchunk2ID", data.Subchunk2ID, 4, 1);
-	add_assoc_long(fmt_array, "Subchunk2Size", data.Subchunk2Size);
+	add_assoc_stringl(data_array, "Subchunk2ID", data.Subchunk2ID, 4, 1);
+	add_assoc_long(data_array, "Subchunk2Size", data.Subchunk2Size);
 	add_assoc_zval(return_arr, "Data", data_array);
 
 	add_assoc_long(return_arr, "duration", data.Subchunk2Size / fmt.ByteRate);
@@ -172,7 +172,7 @@ static void php_phpwave_init_globals(zend_phpwave_globals *phpwave_globals)
  */
 PHP_MINIT_FUNCTION(phpwave)
 {
-	/* If you have INI entries, uncomment these lines
+	/* If you have INI entries, uncomment these lines 
 	REGISTER_INI_ENTRIES();
 	*/
 	return SUCCESS;
