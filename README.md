@@ -7,10 +7,10 @@ a php extension for getting wave audio file's metadata
 纯C实现的项目仓库：https://github.com/cw1997/wave-resolver
 
 # function_list:
-	- array phpwave(string audio_file_fullpath)
+- array phpwave(string audio_file_fullpath)
 
 # example
 print_r(phpwave(dirname(__dir__).'/test.wav'));
 
-<!-- ![](example.png) -->
+![](https://github.com/cw1997/phpwave/blob/master/example.png?raw=true)
 
