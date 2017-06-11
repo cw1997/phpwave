@@ -1,0 +1,13 @@
+// $Id$
+// vim:ft=javascript
+
+// If your extension references something external, use ARG_WITH
+// ARG_WITH("phpwave", "for phpwave support", "no");
+
+// Otherwise, use ARG_ENABLE
+// ARG_ENABLE("phpwave", "enable phpwave support", "no");
+
+if (PHP_PHPWAVE != "no") {
+	EXTENSION("phpwave", "phpwave.c");
+}
+
